@@ -1,0 +1,33 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "csvtool"
+version = "0.1.0"
+description = "Load, clean and summarize CSV files from the command line"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = ["pandas>=2.0"]
+
+[project.optional-dependencies]
+dev = ["pytest>=8", "pytest-cov", "mypy", "ruff", "pandas-stubs"]
+
+[project.scripts]
+csvtool = "csvtool.cli:main"
+
+[tool.setuptools.package-data]
+csvtool = ["py.typed"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.mypy]
+strict = true
+python_version = "3.10"
+
+[tool.ruff]
+line-length = 88
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP"]
